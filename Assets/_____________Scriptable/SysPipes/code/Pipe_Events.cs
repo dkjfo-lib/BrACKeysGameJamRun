@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pipe_Events", menuName = "Pipes/Pipe_Events")]
+[CreateAssetMenu(fileName = "Pipe_Events", menuName = "Pipes/Events")]
 public class Pipe_Events : ScriptableObject
 {
-    public List<EventData> events;
+    public List<EventData> events { get; } = new List<EventData>();
 
     public void SendEvent(string eventTag)
     {
@@ -41,7 +41,6 @@ public class Pipe_Events : ScriptableObject
     }
 }
 
-[System.Serializable]
 public class EventData
 {
     public string tag;

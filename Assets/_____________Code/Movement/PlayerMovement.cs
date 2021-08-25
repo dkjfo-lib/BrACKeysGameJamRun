@@ -2,13 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerMovementInput", menuName = "Movement/PlayerMovementInput")]
-public class PlayerMovement : MovementInput
+public class PlayerMovement : MonoBehaviour
 {
-    public override Vector2 ReadMovementInput()
+    public float normalSpeed = 100;
+    public float maintainSpeedValue = .97f;
+    public float drag = 10;
+
+    Rigidbody2D Rigidbody { get; set; }
+
+    private void Start()
     {
-        return CreateMovementInput();
+        Rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody.drag = drag;
     }
+
+    void FixedUpdate()
+    {
+        var input = CreateMovementInput();
+        if (input != Vector2.zero)
+        {
+            var speed = Input.GetKey(KeyCode.LeftShift) ?
+                normalSpeed / 3 :
+                normalSpeed;
+            var velocity = input * Time.fixedDeltaTime * speed;
+            Rigidbody.velocity += velocity;
+        }
+        else
+        {
+            Rigidbody.velocity *= maintainSpeedValue;
+        }
+    }
+
 
     private static Vector2 CreateMovementInput()
     {

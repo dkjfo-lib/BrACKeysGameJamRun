@@ -14,6 +14,6 @@ public class Layers : MonoBehaviour
         Ground = LayerMask.GetMask("Ground");
         GroundAndPlatforms = LayerMask.GetMask("Ground", "Platforms");
         Items = LayerMask.GetMask("Items");
-        Hittable = LayerMask.GetMask("Characters", "Items");
+        Hittable = LayerMask.GetMask("Characters", "Items", "Ground");
     }
 }

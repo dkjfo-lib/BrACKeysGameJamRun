@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672a53f0c3edbd24892d07b6684b07a7, type: 3}
-  m_Name: Player MI
+  m_Script: {fileID: 11500000, guid: ae5d44a6742a8274782355bc86b094bc, type: 3}
+  m_Name: Pipe_CamShakes
   m_EditorClassIdentifier: 

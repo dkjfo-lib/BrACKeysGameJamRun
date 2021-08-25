@@ -6,12 +6,17 @@ public interface IHittable
 {
     Faction Faction { get; }
 
-    Vector2 GetHit(Hit hit);
+    void GetHit(Hit hit);
 }
 
-public class Hit
+public struct Hit
 {
-    public int damage;
+    public float damage;
+
+    public Hit(float damage)
+    {
+        this.damage = damage;
+    }
 }
 
 public enum Faction
