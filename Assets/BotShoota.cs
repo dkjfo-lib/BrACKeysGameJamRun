@@ -2,27 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class BotShoota : MonoBehaviour
 {
     public ProjectileHit Projectile;
     [Space]
     public float shootsPerSecond = 4;
     float timeLastShoot = -100;
 
+    BotSight BotSight { get; set; }
+    BotMovement BotMovement { get; set; }
+
+    private void Start()
+    {
+        BotSight = transform.parent.GetComponentInChildren<BotSight>();
+        BotMovement = transform.GetComponentInParent<BotMovement>();
+    }
+
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (BotMovement.KeepsGoodDistance)
         {
-            RotateToMouse();
+            RotateToTarget();
             ShootPrimary();
         }
     }
 
-    void RotateToMouse()
+    void RotateToTarget()
     {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 directionToMouse = mouseWorldPosition - (Vector2)transform.position;
-        transform.right = directionToMouse;
+        transform.right = BotSight.targetDirection;
     }
 
     void ShootPrimary()
