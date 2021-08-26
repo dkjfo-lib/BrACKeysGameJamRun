@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class ShakeCamera : MonoBehaviour
 {
+    public Pipe_CamShakes pipe;
+    [Space]
     public float shakeLength = .05f;
 
     public Vector3 CurrentDisplacement { get; private set; }
 
-    private void Start()
+    void Update()
     {
-        Shake(.5f, 6, 100);
-    }
-
-    public void Shake(float amplitude, float duration, float dencity)
-    {
-        StartCoroutine(PerformShake(amplitude, duration, dencity));
-    }
-
-    IEnumerator PerformShake(float amplitude, float duration, float dencity)
-    {
-        while (true)
+        foreach (var newCamShake in pipe.AwaitingCamShakes)
         {
-            var newDisplacement = new Vector3(Random.Range(-amplitude, amplitude), Random.Range(-amplitude, amplitude));
+            Shake(newCamShake);
+        }
+        pipe.AwaitingCamShakes.Clear();
+    }
+
+    public void Shake(ShakeAtributes shakeAtributes)
+    {
+        StartCoroutine(PerformShake(shakeAtributes));
+    }
+
+    IEnumerator PerformShake(ShakeAtributes shakeAtributes)
+    {
+        float timeStart = Time.timeSinceLevelLoad;
+        float PassedTime() => Time.timeSinceLevelLoad - timeStart;
+        float GetAmplitude() => Random.Range(-shakeAtributes.amplitude, shakeAtributes.amplitude);
+        do
+        {
+            var newDisplacement = new Vector3(GetAmplitude(), GetAmplitude());
             CurrentDisplacement += newDisplacement;
             yield return new WaitForSeconds(shakeLength);
             CurrentDisplacement = Vector2.zero;
-            yield return new WaitForSeconds(Mathf.Max(1f / dencity, shakeLength));
-        }
+
+            // wait for next shake
+            yield return new WaitForSeconds(Mathf.Max(1 / shakeAtributes.shakesPerSecond, shakeLength));
+        } while (PassedTime() < shakeAtributes.duration);
     }
 }

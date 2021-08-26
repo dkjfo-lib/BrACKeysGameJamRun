@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ICanHit
 {
-    Object CoreObject { get; }
+    Object Me { get; }
     bool IsSelfDamageOn { get; }
     bool IsFriendlyDamageOn { get; }
 
@@ -17,7 +17,7 @@ public static class Ext_ICanHit
     {
         if (hitted == null) return false;
 
-        bool isOneself = hitting.CoreObject == (Object)hitted;
+        bool isOneself = hitting.Me == (Object)hitted;
         bool selfDamageIsOn = hitting.IsSelfDamageOn;
         bool shoulHitSelf = isOneself && selfDamageIsOn;
         if (shoulHitSelf) return true;

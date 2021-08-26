@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2263832404205338472}
   - component: {fileID: 2263832404205338473}
   - component: {fileID: 6832891447663193070}
-  - component: {fileID: 2064876312434467942}
+  - component: {fileID: 126413932}
+  - component: {fileID: 126413933}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -105,21 +106,35 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
---- !u!114 &2064876312434467942
+--- !u!114 &126413932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2263832404205338474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecb5c96573416b4fbb8a64312464dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 06dd2f25121998a4ea076cf756365567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayer: {fileID: 0}
+  Addon_CamShake: {fileID: 126413933}
   offset: {x: 0, y: 0}
   directionOffset: 2
   zoom: 2
   stickness: 0.5
   screenBorder: 1.2
+--- !u!114 &126413933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263832404205338474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4a49e8e8a9b3449bc7331addacee74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipe: {fileID: 11400000, guid: ef6844818e1142e46967ed0e2dd94004, type: 2}
+  shakeLength: 0.01

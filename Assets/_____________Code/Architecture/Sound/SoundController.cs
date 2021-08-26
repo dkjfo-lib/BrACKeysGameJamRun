@@ -48,7 +48,7 @@ public class SoundController : MonoBehaviour
         // [x] разбей на группы по одинаковому клипу 
         // [ ] внутри группы сортировка по расстоянию от игрока
         // [ ] по порядку запускай из каждой следующий клип 
-        var clipsInRange = pipe.awaitingClips.Where(s => (s.position - currentPlayer.transform.position).sqrMagnitude < maxDistance * maxDistance);
+        var clipsInRange = pipe.AwaitingClips.Where(s => (s.position - currentPlayer.transform.position).sqrMagnitude < maxDistance * maxDistance);
         var identicalClips = clipsInRange.GroupBy(s => s.clipCollection);
         foreach (var sameClipsCollections in identicalClips)
         {
@@ -60,7 +60,7 @@ public class SoundController : MonoBehaviour
                     sameClipsCollections.ElementAt(i).position);
             }
         }
-        pipe.awaitingClips.Clear();
+        pipe.AwaitingClips.Clear();
     }
 
     public void PlaySound(AudioClip clip, Vector3 position)
