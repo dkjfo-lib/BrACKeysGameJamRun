@@ -12,16 +12,16 @@ PrefabInstance:
       value: Projectile E
       objectReference: {fileID: 0}
     - target: {fileID: 1470042837399758736, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Size.x
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1470042837399758736, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
-      propertyPath: m_Color.g
-      value: 0
+      propertyPath: m_Size.y
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1470042837399758736, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1470042837399758737, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
       propertyPath: m_RootOrder
