@@ -44,11 +44,11 @@ public class WeaponUI : MonoBehaviour
 
     IEnumerator UpdateCurrentWeapon()
     {
-        var cellSize = 100;
+        var cellSize = 110;
         while (true)
         {
             currentWeapon = WeaponPipe.currentWeapon;
-            currentWeaponBorderTargetPos = (currentWeapon - 1) * Vector3.right * cellSize;
+            currentWeaponBorderTargetPos = (currentWeapon - 1) * Vector3.right * cellSize + Vector3.up * 50;
 
             yield return new WaitUntil(() => currentWeapon != WeaponPipe.currentWeapon);
         }

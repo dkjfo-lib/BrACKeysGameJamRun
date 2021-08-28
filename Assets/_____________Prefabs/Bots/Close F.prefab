@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114730692766486406, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18551a11ddf65ae42a0f91155ec5f5d1, type: 3}
     - target: {fileID: 114730693077540129, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
       propertyPath: Projectile
       value: 
@@ -71,5 +75,21 @@ PrefabInstance:
       propertyPath: FactionToHunt
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2665981606116466013, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: timeInDash
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2665981606116466013, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: timeBetweenDashes
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668625183722404983, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: sIdle
+      value: 
+      objectReference: {fileID: 21300000, guid: 18551a11ddf65ae42a0f91155ec5f5d1, type: 3}
+    - target: {fileID: 5668625183722404983, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: sMoves
+      value: 
+      objectReference: {fileID: 21300000, guid: b4ccfcf9119acbe45b8dcbf6e69c5b78, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}

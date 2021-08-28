@@ -10,6 +10,7 @@ public class BotMovement : MonoBehaviour, IBotMovement
     [Space]
     public Vector2 keepDistance = new Vector2(4, 6);
     public bool KeepsGoodDistance { get; private set; }
+    public bool Moves { get; private set; }
 
     Rigidbody2D Rigidbody { get; set; }
     BotSight BotSight { get; set; }
@@ -28,10 +29,12 @@ public class BotMovement : MonoBehaviour, IBotMovement
         {
             var velocity = input * Time.fixedDeltaTime * normalSpeed;
             Rigidbody.velocity += velocity;
+            Moves = true;
         }
         else
         {
             Rigidbody.velocity *= maintainSpeedValue;
+            Moves = false;
         }
     }
 

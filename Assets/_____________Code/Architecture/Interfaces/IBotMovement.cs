@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IBotMovement
 {
     bool KeepsGoodDistance { get; }
+    bool Moves { get; }
 }

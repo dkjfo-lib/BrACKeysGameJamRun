@@ -10,6 +10,7 @@ public class BotDash : MonoBehaviour, IBotMovement
     [Space]
     public Vector2 keepDistance = new Vector2(4, 6);
     public bool KeepsGoodDistance { get; private set; }
+    public bool Moves { get; private set; }
     [Space]
     public float timeInDash = .5f;
     public float timeBetweenDashes = 1.2f;
@@ -35,8 +36,12 @@ public class BotDash : MonoBehaviour, IBotMovement
                 yield return new WaitForSeconds(.2f);
                 input = CreateMovementInput();
             } while (input == Vector2.zero);
+
+            Moves = true;
             yield return new WaitForSeconds(timeInDash);
+
             input = Vector2.zero;
+            Moves = false;
             yield return new WaitForSeconds(timeBetweenDashes - .2f);
         }
     }
