@@ -55,6 +55,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5862551705693734122, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
+      propertyPath: sightRadius
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5862551706217721668, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
       propertyPath: keepDistance.x
       value: 0
@@ -77,11 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862551706217721689, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.81
       objectReference: {fileID: 0}
     - target: {fileID: 5862551706217721689, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 3.54
       objectReference: {fileID: 0}
     - target: {fileID: 5862551706217721689, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -119,6 +123,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c685c616c66c1774da1fccb426f6bfa8, type: 3}
+    - target: {fileID: 5862551707018103114, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ef8627cc7baeb744881131d95db2d31, type: 2}
     - target: {fileID: 5862551707018103115, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

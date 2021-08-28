@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 18551a11ddf65ae42a0f91155ec5f5d1, type: 3}
+    - target: {fileID: 114730692766486406, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7852b30939b880644938e234f32a6c36, type: 2}
     - target: {fileID: 114730693077540129, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
       propertyPath: Projectile
       value: 
@@ -82,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 2665981606116466013, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
       propertyPath: timeBetweenDashes
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814911094889341540, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5668625183722404983, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
       propertyPath: sIdle

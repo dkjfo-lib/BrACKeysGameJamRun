@@ -80,13 +80,14 @@ MonoBehaviour:
   pipe_Sounds: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   ShootSound: {fileID: 11400000, guid: d4b6780e11cb21b43bf145d5027b01ac, type: 2}
   HitSound: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
-  hitParticles: {fileID: 0}
-  trailRenderer: {fileID: 8350504198759411488}
+  Addon_hitParticles: {fileID: 0}
   hitFaction: 0
   damage: 1
+  lifetime: 5
+  spreadAngle: 120
   spawnProjectiles: 3
   projectilesDownFall: 3
-  Projectile: {fileID: 1470042837399758738}
+  ChildProjectileType: {fileID: 0}
 --- !u!50 &1470042837399758732
 Rigidbody2D:
   serializedVersion: 4
@@ -197,12 +198,12 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.2
+  m_PointLightOuterRadius: 0.5
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5

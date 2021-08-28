@@ -80,20 +80,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1470042837399758738, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
+      propertyPath: ChildProjectileType
+      value: 
+      objectReference: {fileID: 7907505693315430168, guid: 6187ad9791814e145942b017ec25f0d1, type: 3}
+    - target: {fileID: 1470042837399758738, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
       propertyPath: projectilesDownFall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470042837399758738, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
+      propertyPath: propagateFromCharacters
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470042837399758739, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820136125550482696, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
+      propertyPath: shakeOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820136125550482696, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
+      propertyPath: shakeOnDestroy
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7983553283626154264, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
       propertyPath: color.b
-      value: 0.545105
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7983553283626154264, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
       propertyPath: color.g
-      value: 0.545105
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7983553283626154264, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}
       propertyPath: color.r
-      value: 0.8207547
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0accd05cda08c444ae317d11e43e43a, type: 3}

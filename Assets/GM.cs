@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GM : MonoBehaviour
+{
+    static GM gm = null;
+
+    void Start()
+    {
+        if (gm != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gm = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+}

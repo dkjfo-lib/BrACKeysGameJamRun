@@ -14,6 +14,7 @@ public class ProjectileHit : MonoBehaviour, ICanHit
     public Faction hitFaction = Faction.AlwaysHit;
     public float damage = 1;
     [Space]
+    public bool propagateFromCharacters = true;
     public float lifetime = 5;
     public float spreadAngle = 120;
     public int spawnProjectiles = 2;
@@ -65,6 +66,11 @@ public class ProjectileHit : MonoBehaviour, ICanHit
             pipe_Sounds.AddClip(new PlayClipData(HitSound, transform.position));
 
             hittable.GetHit(new Hit(damage));
+
+            if (!propagateFromCharacters && !(hittable is GroundHittable))
+            {
+                spawnProjectiles = 0;
+            }
 
             float normalAngle = GetHitNormal();
             DestroySelf(normalAngle);

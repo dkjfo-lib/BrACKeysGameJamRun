@@ -57,7 +57,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198347013068787964, guid: 5c75f439fc303984a94e92965438c851, type: 3}
       propertyPath: m_Name
-      value: Spawner F
+      value: Spawner Ov F
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816935892790829867, guid: 5c75f439fc303984a94e92965438c851, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816935892790829867, guid: 5c75f439fc303984a94e92965438c851, type: 3}
+      propertyPath: color.g
+      value: 0.10938501
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816935892790829867, guid: 5c75f439fc303984a94e92965438c851, type: 3}
+      propertyPath: color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c75f439fc303984a94e92965438c851, type: 3}

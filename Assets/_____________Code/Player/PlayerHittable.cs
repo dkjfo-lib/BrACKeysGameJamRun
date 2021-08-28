@@ -26,7 +26,7 @@ public class PlayerHittable : MonoBehaviour, IHittable
         hp -= hit.damage;
         if (Addon_ShakeOnHit != null) Addon_ShakeOnHit.DoShake();
         if (Addon_healthPipe != null) Addon_healthPipe.currentValue = hp;
-        if (hp < 0)
+        if (hp <= 0)
         {
             Die();
         }

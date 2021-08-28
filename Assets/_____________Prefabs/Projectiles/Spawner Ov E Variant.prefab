@@ -75,5 +75,17 @@ PrefabInstance:
       propertyPath: projectilesDownFall
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8122436133396157528, guid: 0470996c16f43d441af25eb8c83e9e61, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122436133396157528, guid: 0470996c16f43d441af25eb8c83e9e61, type: 3}
+      propertyPath: color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122436133396157528, guid: 0470996c16f43d441af25eb8c83e9e61, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0470996c16f43d441af25eb8c83e9e61, type: 3}
