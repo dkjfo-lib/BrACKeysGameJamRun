@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotMovement : MonoBehaviour
+public class BotMovement : MonoBehaviour, IBotMovement
 {
     public float normalSpeed = 100;
     public float maintainSpeedValue = .97f;
@@ -26,10 +26,7 @@ public class BotMovement : MonoBehaviour
         var input = CreateMovementInput();
         if (input != Vector2.zero)
         {
-            var speed = Input.GetKey(KeyCode.LeftShift) ?
-                normalSpeed / 3 :
-                normalSpeed;
-            var velocity = input * Time.fixedDeltaTime * speed;
+            var velocity = input * Time.fixedDeltaTime * normalSpeed;
             Rigidbody.velocity += velocity;
         }
         else

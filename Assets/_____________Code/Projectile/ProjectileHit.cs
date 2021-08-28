@@ -66,10 +66,10 @@ public class ProjectileHit : MonoBehaviour, ICanHit
             pipe_Sounds.AddClip(new PlayClipData(HitSound, transform.position));
 
             hittable.GetHit(new Hit(damage));
-            if (hittable is GroundHittable) { } else
-            {
-                spawnProjectiles = 0;
-            }
+            //if (hittable is GroundHittable) { } else
+            //{
+            //    spawnProjectiles = 0;
+            //}
             DestroySelf();
         }
     }

@@ -10,12 +10,12 @@ public class BotShoota : MonoBehaviour
     float timeLastShoot = -100;
 
     BotSight BotSight { get; set; }
-    BotMovement BotMovement { get; set; }
+    IBotMovement BotMovement { get; set; }
 
     private void Start()
     {
         BotSight = transform.parent.GetComponentInChildren<BotSight>();
-        BotMovement = transform.GetComponentInParent<BotMovement>();
+        BotMovement = transform.GetComponentInParent<IBotMovement>();
     }
 
     void Update()

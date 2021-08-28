@@ -7,6 +7,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class WrapShadowAroundCollider : MonoBehaviour
 {
+    //public float offset = .4f;
+
     private static BindingFlags accessFlagsPrivate = BindingFlags.NonPublic | BindingFlags.Instance;
     private static FieldInfo meshField = typeof(ShadowCaster2D).GetField("m_Mesh", accessFlagsPrivate);
     private static FieldInfo shapePathField = typeof(ShadowCaster2D).GetField("m_ShapePath", accessFlagsPrivate);
@@ -23,10 +25,18 @@ public class WrapShadowAroundCollider : MonoBehaviour
 
         var islands = MeshSplitter.SplitToTriangles(mesh);
 
-        foreach (var island in islands)
+        foreach (var triangle in islands)
         {
-            var points = island.vertices;
+            var points = triangle.vertices;
             Vector3[] positions = new Vector3[points.Length];
+            //for (int i = 0; i < points.Length; i++)
+            //{
+            //    for (int j = 0; j < points.Length; j++)
+            //    {
+            //        if (points[i] == points[j]) continue;
+            //        points[j] += (points[i] - points[j]).normalized * offset;
+            //    }
+            //}
             for (int i = 0; i < points.Length; i++)
             {
                 positions[i] = new Vector3(points[i].x, points[i].y, 0);
@@ -36,7 +46,7 @@ public class WrapShadowAroundCollider : MonoBehaviour
             var shadow = newGameObject.AddComponent<ShadowCaster2D>();
             newGameObject.transform.parent = transform;
 
-            shadow.selfShadows = true;
+            shadow.selfShadows = false;
             shapePathField.SetValue(shadow, positions);
             meshField.SetValue(shadow, null);
             onEnableMethod.Invoke(shadow, new object[0]);
