@@ -8,15 +8,17 @@ public class ProjectileHit : MonoBehaviour, ICanHit
     [Space]
     public ClipsCollection ShootSound;
     public ClipsCollection HitSound;
-    public ParticleSystem hitParticles;
-    public TrailRenderer trailRenderer;
+    public ParticleSystem Addon_hitParticles;
+    TrailRenderer Addon_trailRenderer;
     [Space]
     public Faction hitFaction = Faction.AlwaysHit;
     public float damage = 1;
     [Space]
+    public float lifetime = 5;
+    public float spreadAngle = 120;
     public int spawnProjectiles = 2;
     public int projectilesDownFall = 1;
-    public ProjectileHit Projectile;
+    public ProjectileHit ChildProjectileType;
 
     public Object Me => gameObject;
     public bool IsSelfDamageOn => false;
@@ -32,16 +34,18 @@ public class ProjectileHit : MonoBehaviour, ICanHit
 
     void Start()
     {
+        Addon_trailRenderer = GetComponentInChildren<TrailRenderer>();
         pipe_Sounds.AddClip(new PlayClipData(ShootSound, transform.position));
-        //GetComponent<Collider2D>().enabled = true;
-        //StartCoroutine(Init());
+        StartCoroutine(DeathTimer());
     }
 
-    //IEnumerator Init()
-    //{
-    //    yield return new WaitForSeconds(.1f);
-    //    GetComponent<Collider2D>().enabled = true;
-    //}
+    IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(lifetime);
+
+        float movementAngle = Vector2.SignedAngle(Vector2.right, transform.right);
+        DestroySelf(movementAngle);
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -61,25 +65,29 @@ public class ProjectileHit : MonoBehaviour, ICanHit
             pipe_Sounds.AddClip(new PlayClipData(HitSound, transform.position));
 
             hittable.GetHit(new Hit(damage));
-            //if (hittable is GroundHittable) { } else
-            //{
-            //    spawnProjectiles = 0;
-            //}
-            DestroySelf();
+
+            float normalAngle = GetHitNormal();
+            DestroySelf(normalAngle);
         }
     }
 
-    void DestroySelf()
+    float GetHitNormal()
     {
         var hit = Physics2D.Raycast(transform.position - transform.right, transform.right, projectileSize * 5, Layers.Hittable);
-        float movementAngle = Vector2.SignedAngle(Vector2.right, -transform.right);
         float normalAngle = Vector2.SignedAngle(Vector2.right, hit.normal);
+        return normalAngle;
+    }
+
+    void DestroySelf(float normalAngle)
+    {
+        float movementAngle = Vector2.SignedAngle(Vector2.right, -transform.right);
 
         float fallAngle = movementAngle - normalAngle;
         float descendAngle = normalAngle - fallAngle;
 
         if (spawnProjectiles > 0)
         {
+            // Spawn Projectiles like a mirror
             //float delta = Mathf.Max(fallAngle / spawnProjectiles, minDeltaAngle);
             //int prS = (int)Mathf.Ceil(-spawnProjectiles / 2f);
             //int prE = (int)Mathf.Floor(spawnProjectiles / 2f);
@@ -89,18 +97,20 @@ public class ProjectileHit : MonoBehaviour, ICanHit
             //    var newP = Instantiate(Projectile, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
             //    newP.spawnProjectiles -= projectilesDownFall;
             //}
-            float delta = Mathf.Max(120 / spawnProjectiles, minDeltaAngle);
+
+            // Spawn Projectiles in a set sector
+            float delta = Mathf.Max(spreadAngle / spawnProjectiles, minDeltaAngle);
             int prS = (int)Mathf.Ceil(-spawnProjectiles / 2f);
             int prE = (int)Mathf.Floor(spawnProjectiles / 2f);
             for (int i = prS; i <= prE; i++)
             {
                 float descendInstanceAngle = normalAngle + delta * i;
-                var newP = Instantiate(Projectile, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
+                var newP = Instantiate(ChildProjectileType, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
                 newP.spawnProjectiles -= projectilesDownFall;
             }
         }
-        trailRenderer.transform.parent = transform.parent;
-        Destroy(trailRenderer.gameObject, trailRenderer.time);
+        Addon_trailRenderer.transform.parent = transform.parent;
+        Destroy(Addon_trailRenderer.gameObject, Addon_trailRenderer.time);
         Destroy(gameObject);
     }
 }
