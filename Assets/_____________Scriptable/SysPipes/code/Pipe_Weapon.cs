@@ -22,5 +22,6 @@ public struct Weapon
     [Space]
     public bool unlocked;
     public float shotsPerSecond;
+    public float manaCost;
     public ProjectileHit projectile;
 }

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pipe_Value : MonoBehaviour
+[CreateAssetMenu(fileName = "Pipe_Value", menuName = "Pipes/Value")]
+public class Pipe_Value : ScriptableObject
 {
     public float maxValue;
     public float currentValue;
