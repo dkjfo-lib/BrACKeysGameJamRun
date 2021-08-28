@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerHittable : MonoBehaviour, IHittable
 {
-    public Pipe_Value healthPipe;
+    public Pipe_Value Addon_healthPipe;
+    public ShakeOnDestroy Addon_ShakeOnHit;
     [Space]
     public Faction faction = Faction.PlayerTeam;
     public Faction Faction => faction;
@@ -13,20 +14,18 @@ public class PlayerHittable : MonoBehaviour, IHittable
 
     private void Start()
     {
-        if (healthPipe != null)
+        if (Addon_healthPipe != null)
         {
-            healthPipe.maxValue = hp;
-            healthPipe.currentValue = hp;
+            Addon_healthPipe.maxValue = hp;
+            Addon_healthPipe.currentValue = hp;
         }
     }
 
     public void GetHit(Hit hit)
     {
         hp -= hit.damage;
-        if (healthPipe != null)
-        {
-            healthPipe.currentValue = hp;
-        }
+        if (Addon_ShakeOnHit != null) Addon_ShakeOnHit.DoShake();
+        if (Addon_healthPipe != null) Addon_healthPipe.currentValue = hp;
         if (hp < 0)
         {
             Die();

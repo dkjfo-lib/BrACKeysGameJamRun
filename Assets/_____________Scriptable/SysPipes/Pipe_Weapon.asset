@@ -12,17 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeff9a036a860f54d8bc0b00cf9ce3b4, type: 3}
   m_Name: Pipe_Weapon
   m_EditorClassIdentifier: 
-  currentWeapon: 0
+  currentWeapon: 2
   gameWeapons:
   - name: Pistol
     unlocked: 1
     shotsPerSecond: 3
+    manaCost: 3
     projectile: {fileID: 2198347013068787937, guid: 5c75f439fc303984a94e92965438c851, type: 3}
   - name: Shotgun
     unlocked: 1
     shotsPerSecond: 1
+    manaCost: 5
     projectile: {fileID: 2198347013068787937, guid: 5c75f439fc303984a94e92965438c851, type: 3}
   - name: Minigun
     unlocked: 1
     shotsPerSecond: 12
+    manaCost: 2
     projectile: {fileID: 2198347013068787937, guid: 5c75f439fc303984a94e92965438c851, type: 3}

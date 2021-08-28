@@ -16,6 +16,7 @@ public class CameraFollower : MonoBehaviour
     Vector3 Offset => new Vector3(offset.x, offset.y, -10);
     
     PlayerSinglton currentPlayer;
+    Vector3 lastTargetPosition;
 
     private void Start()
     {
@@ -38,13 +39,16 @@ public class CameraFollower : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentPlayer == null) return;
+        if (currentPlayer != null)
+        {
+            lastTargetPosition = currentPlayer.transform.position;
+        }
 
         var pX = Mathf.Clamp((Input.mousePosition.x / Screen.width * 2 - 1) * screenBorder, -1, 1);
         var pY = Mathf.Clamp((Input.mousePosition.y / Screen.height * 2 - 1) * screenBorder, -1, 1);
 
         var directionOffset = new Vector3(pX, pY, 0) * this.directionOffset;
-        Vector3 targetPosition = currentPlayer.transform.position + Offset + directionOffset;
+        Vector3 targetPosition = lastTargetPosition + Offset + directionOffset;
 
         if (Addon_CamShake != null)
         {

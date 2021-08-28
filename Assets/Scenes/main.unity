@@ -13962,6 +13962,7 @@ GameObject:
   - component: {fileID: 863994176}
   - component: {fileID: 863994177}
   - component: {fileID: 863994175}
+  - component: {fileID: 863994179}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -14023,7 +14024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce5ab7676db50548a9279e7b16a3bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPipe: {fileID: 11400000, guid: 6086e7eea43bc7443bc617ca13eec037, type: 2}
+  Addon_healthPipe: {fileID: 11400000, guid: 6086e7eea43bc7443bc617ca13eec037, type: 2}
+  Addon_ShakeOnHit: {fileID: 863994179}
   faction: 2
   hp: 10
 --- !u!114 &863994176
@@ -14075,6 +14077,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &863994179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863994172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3417fb3d49c324abeee7dcd0194724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pipe_CamShakes: {fileID: 11400000, guid: ef6844818e1142e46967ed0e2dd94004, type: 2}
+  shakeOnStart: 0
+  shakeOnDestroy: 0
+  ShakeAtributes:
+    amplitude: 1.5
+    duration: 0.5
+    shakesPerSecond: 1000
 --- !u!1 &1072229487
 GameObject:
   m_ObjectHideFlags: 0
@@ -29500,15 +29521,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62830e20431261241ae864ef52540dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pipe_ManaValue: {fileID: 0}
+  Pipe_ManaValue: {fileID: 11400000, guid: 73c5aacd49639a242b132bc8f7bd18d3, type: 2}
   maxMana: 12
   curMana: 12
   manaRechargePerSecond: 4
   Pipe_Weapon: {fileID: 11400000, guid: d6300fb489aafcd479b9f8410cfdfd89, type: 2}
-  Pipe_SoundsPlay: {fileID: 0}
-  sound_notEnoughMana: {fileID: 0}
-  sound_manaExhausted: {fileID: 0}
-  sound_manaRecharged: {fileID: 0}
+  Pipe_SoundsPlay: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
+  sound_manaExhausted: {fileID: 11400000, guid: 3da49ea288057d84d8a3a6090fa04764, type: 2}
+  sound_manaRecharged: {fileID: 11400000, guid: 3da49ea288057d84d8a3a6090fa04764, type: 2}
 --- !u!1001 &2263832403014411291
 PrefabInstance:
   m_ObjectHideFlags: 0

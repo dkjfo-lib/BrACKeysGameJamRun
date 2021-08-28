@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1137768229667143649}
   - component: {fileID: 1470042837399758732}
   - component: {fileID: -1323699801954532086}
+  - component: {fileID: -5806221329398332734}
   m_Layer: 10
   m_Name: _Spawner Base
   m_TagString: Untagged
@@ -77,7 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e351a0a7a89d39348a06e38d40f12713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipe_CamShakes: {fileID: 11400000, guid: ef6844818e1142e46967ed0e2dd94004, type: 2}
   pipe_Sounds: {fileID: 11400000, guid: 49c7055d96e6a844d8e1e445464b45ca, type: 2}
   ShootSound: {fileID: 11400000, guid: d4b6780e11cb21b43bf145d5027b01ac, type: 2}
   HitSound: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
@@ -88,10 +88,6 @@ MonoBehaviour:
   spawnProjectiles: 3
   projectilesDownFall: 3
   Projectile: {fileID: 1470042837399758738}
-  onHitShake:
-    amplitude: 0.5
-    duration: 0.1
-    shakesPerSecond: 1000
 --- !u!114 &1137768229667143649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +139,25 @@ CapsuleCollider2D:
   m_Offset: {x: -0.125, y: 0}
   m_Size: {x: 0.5, y: 0.25}
   m_Direction: 1
+--- !u!114 &-5806221329398332734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470042837399758735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3417fb3d49c324abeee7dcd0194724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pipe_CamShakes: {fileID: 11400000, guid: ef6844818e1142e46967ed0e2dd94004, type: 2}
+  shakeOnStart: 1
+  shakeOnDestroy: 1
+  ShakeAtributes:
+    amplitude: 0.5
+    duration: 0.1
+    shakesPerSecond: 1000
 --- !u!1 &2142389141809779327
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectileHit : MonoBehaviour, ICanHit
 {
-    public Pipe_CamShakes pipe_CamShakes;
     public Pipe_SoundsPlay pipe_Sounds;
     [Space]
     public ClipsCollection ShootSound;
@@ -18,8 +17,6 @@ public class ProjectileHit : MonoBehaviour, ICanHit
     public int spawnProjectiles = 2;
     public int projectilesDownFall = 1;
     public ProjectileHit Projectile;
-    [Space]
-    public ShakeAtributes onHitShake = new ShakeAtributes(1, .5f, .125f);
 
     public Object Me => gameObject;
     public bool IsSelfDamageOn => false;
@@ -35,7 +32,6 @@ public class ProjectileHit : MonoBehaviour, ICanHit
 
     void Start()
     {
-        pipe_CamShakes.AddCamShake(onHitShake);
         pipe_Sounds.AddClip(new PlayClipData(ShootSound, transform.position));
         //GetComponent<Collider2D>().enabled = true;
         //StartCoroutine(Init());
@@ -62,7 +58,6 @@ public class ProjectileHit : MonoBehaviour, ICanHit
         var hittable = collision.transform.GetComponent<IHittable>();
         if (this.ShouldHit(hittable))
         {
-            pipe_CamShakes.AddCamShake(onHitShake);
             pipe_Sounds.AddClip(new PlayClipData(HitSound, transform.position));
 
             hittable.GetHit(new Hit(damage));
