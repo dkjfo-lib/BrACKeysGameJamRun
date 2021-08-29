@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: shootsPerSecond
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5862551707195169773, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
+      propertyPath: Projectile.Array.data[0]
+      value: 
+      objectReference: {fileID: 7800976355464456211, guid: 04d272e7aa55f6b4ca467155ef875f3b, type: 3}
     m_RemovedComponents:
     - {fileID: 5862551706217721668, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bd68237f2a868349922b3ec3aac234d, type: 3}

@@ -83,7 +83,8 @@ MonoBehaviour:
   HitSound: {fileID: 11400000, guid: 1da00febe55d45c40a42e0352afdc040, type: 2}
   Addon_hitParticles: {fileID: 0}
   hitFaction: 0
-  damage: 1
+  damage: 0
+  propagateFromCharacters: 1
   lifetime: 5
   spreadAngle: 120
   spawnProjectiles: 3

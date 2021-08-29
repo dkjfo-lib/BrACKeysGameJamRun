@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 2211125292533271893, guid: 1eb313aa3250b88448c52b083581dd02, type: 3}
+    - target: {fileID: 114730693077540129, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
+      propertyPath: Projectile.Array.data[0]
+      value: 
+      objectReference: {fileID: 2211125292533271893, guid: 1eb313aa3250b88448c52b083581dd02, type: 3}
     - target: {fileID: 114730694113323402, guid: a1b9c84b8956506428c886cb01fa5f06, type: 3}
       propertyPath: hp
       value: 1

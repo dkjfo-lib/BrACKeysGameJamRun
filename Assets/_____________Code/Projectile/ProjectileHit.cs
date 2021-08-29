@@ -112,7 +112,8 @@ public class ProjectileHit : MonoBehaviour, ICanHit
             {
                 float descendInstanceAngle = normalAngle + delta * i;
                 var newP = Instantiate(ChildProjectileType, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
-                newP.spawnProjectiles -= projectilesDownFall;
+                newP.spawnProjectiles = spawnProjectiles - projectilesDownFall;
+                newP.projectilesDownFall = projectilesDownFall;
             }
         }
         Addon_trailRenderer.transform.parent = transform.parent;

@@ -29,7 +29,7 @@ public class WeaponUI : MonoBehaviour
             weaponsUnlocked = WeaponPipe.weaponsUnlocked;
             for (int i = 0; i < 3; i++)
             {
-                if (i <= weaponsUnlocked)
+                if (i < weaponsUnlocked)
                 {
                     weaponSlots[i].color = Color.white;
                 }

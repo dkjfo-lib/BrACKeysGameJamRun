@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BotShoota : MonoBehaviour
 {
-    public ProjectileHit Projectile;
+    public int ProjectileId = 0;
+    public ProjectileHit[] Projectile;
     [Space]
     public float shootsPerSecond = 4;
     float timeLastShoot = -100;
@@ -37,7 +38,7 @@ public class BotShoota : MonoBehaviour
         float TimePassed() => Time.timeSinceLevelLoad - timeLastShoot;
         if (TimePassed() > 1 / shootsPerSecond)
         {
-            Instantiate(Projectile, transform.position + transform.right, transform.rotation);
+            Instantiate(Projectile[ProjectileId], transform.position + transform.right, transform.rotation);
             timeLastShoot = Time.timeSinceLevelLoad;
         }
     }

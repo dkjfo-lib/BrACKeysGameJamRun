@@ -52,9 +52,9 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
+        RotateToMouse();
         if (Input.GetMouseButton(0))
         {
-            RotateToMouse();
             ShootPrimary();
         }
     }

@@ -21,11 +21,11 @@ MonoBehaviour:
     projectile: {fileID: 2198347013068787937, guid: 5c75f439fc303984a94e92965438c851, type: 3}
   - name: Shotgun
     unlocked: 1
-    shotsPerSecond: 1
+    shotsPerSecond: 2
     manaCost: 6
     projectile: {fileID: 4024055031094862138, guid: a2850eb1b629d9447b3e65df7f5251aa, type: 3}
   - name: Minigun
-    unlocked: 1
+    unlocked: 0
     shotsPerSecond: 12
-    manaCost: 2
+    manaCost: 1
     projectile: {fileID: 2198347013068787937, guid: 5c75f439fc303984a94e92965438c851, type: 3}
