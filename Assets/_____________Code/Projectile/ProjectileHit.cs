@@ -4,79 +4,120 @@ using UnityEngine;
 
 public class ProjectileHit : MonoBehaviour, ICanHit
 {
-    public Pipe_CamShakes pipe_CamShakes;
     public Pipe_SoundsPlay pipe_Sounds;
     [Space]
     public ClipsCollection ShootSound;
     public ClipsCollection HitSound;
-    //public ParticleSystem hitParticles;
+    public ParticleSystem Addon_hitParticles;
+    TrailRenderer Addon_trailRenderer;
     [Space]
+    public Faction hitFaction = Faction.AlwaysHit;
     public float damage = 1;
-    public int spawnProjectiles = 2;
-    public ProjectileHit Projectile;
     [Space]
-    public ShakeAtributes onHitShake = new ShakeAtributes(1, .5f, .125f);
+    public bool propagateFromCharacters = true;
+    public float lifetime = 5;
+    public float spreadAngle = 120;
+    public int spawnProjectiles = 2;
+    public int projectilesDownFall = 1;
+    public ProjectileHit ChildProjectileType;
 
     public Object Me => gameObject;
     public bool IsSelfDamageOn => false;
-    public bool IsFriendlyDamageOn => true;
+    public bool IsFriendlyDamageOn => false;
 
-    private float projectileSize = .3f;
+    private float minDeltaAngle = 10;
+    private float projectileSize = 1f;
 
     public bool IsEnemy(Faction faction)
     {
-        return true;
+        return hitFaction == faction;
     }
 
     void Start()
     {
-        pipe_CamShakes.AddCamShake(onHitShake);
+        Addon_trailRenderer = GetComponentInChildren<TrailRenderer>();
         pipe_Sounds.AddClip(new PlayClipData(ShootSound, transform.position));
-        StartCoroutine(Init());
+        StartCoroutine(DeathTimer());
     }
 
-    IEnumerator Init()
+    IEnumerator DeathTimer()
     {
-        yield return new WaitForSeconds(.1f);
-        GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(lifetime);
+
+        float movementAngle = Vector2.SignedAngle(Vector2.right, transform.right);
+        DestroySelf(movementAngle);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        OnHit(collision);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        OnHit(collision);
+    }
+
+    void OnHit(Collider2D collision)
+    {
         var hittable = collision.transform.GetComponent<IHittable>();
         if (this.ShouldHit(hittable))
         {
-            pipe_CamShakes.AddCamShake(onHitShake);
             pipe_Sounds.AddClip(new PlayClipData(HitSound, transform.position));
 
             hittable.GetHit(new Hit(damage));
-            DestroySelf();
+
+            if (!propagateFromCharacters && !(hittable is GroundHittable))
+            {
+                spawnProjectiles = 0;
+            }
+
+            float normalAngle = GetHitNormal();
+            DestroySelf(normalAngle);
         }
     }
 
-    void DestroySelf()
+    float GetHitNormal()
     {
         var hit = Physics2D.Raycast(transform.position - transform.right, transform.right, projectileSize * 5, Layers.Hittable);
-        float movementAngle = Vector2.SignedAngle(Vector2.right, -transform.right);
         float normalAngle = Vector2.SignedAngle(Vector2.right, hit.normal);
+        return normalAngle;
+    }
+
+    void DestroySelf(float normalAngle)
+    {
+        float movementAngle = Vector2.SignedAngle(Vector2.right, -transform.right);
 
         float fallAngle = movementAngle - normalAngle;
         float descendAngle = normalAngle - fallAngle;
 
-        Debug.Log("F " + fallAngle);
-        Debug.Log("N " + normalAngle);
-        Debug.Log("D " + descendAngle);
-
-        float delta = fallAngle / spawnProjectiles;
-        int prS = (int)Mathf.Ceil(-spawnProjectiles / 2f);
-        int prE = (int)Mathf.Floor(spawnProjectiles / 2f);
-        for (int i = prS; i < prE; i++)
+        if (spawnProjectiles > 0)
         {
-            float descendInstanceAngle = descendAngle + delta * i;
-            var newP = Instantiate(Projectile, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
-            newP.spawnProjectiles -= 1;
-            Debug.Log("D" + i + " " + descendInstanceAngle);
+            // Spawn Projectiles like a mirror
+            //float delta = Mathf.Max(fallAngle / spawnProjectiles, minDeltaAngle);
+            //int prS = (int)Mathf.Ceil(-spawnProjectiles / 2f);
+            //int prE = (int)Mathf.Floor(spawnProjectiles / 2f);
+            //for (int i = prS; i < prE; i++)
+            //{
+            //    float descendInstanceAngle = descendAngle + delta * i;
+            //    var newP = Instantiate(Projectile, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
+            //    newP.spawnProjectiles -= projectilesDownFall;
+            //}
+
+            // Spawn Projectiles in a set sector
+            float delta = Mathf.Max(spreadAngle / spawnProjectiles, minDeltaAngle);
+            int prS = (int)Mathf.Ceil(-spawnProjectiles / 2f);
+            int prE = (int)Mathf.Floor(spawnProjectiles / 2f);
+            for (int i = prS; i <= prE; i++)
+            {
+                float descendInstanceAngle = normalAngle + delta * i;
+                var newP = Instantiate(ChildProjectileType, transform.position - transform.right * projectileSize, Quaternion.Euler(0, 0, descendInstanceAngle));
+                newP.spawnProjectiles = spawnProjectiles - projectilesDownFall;
+                newP.projectilesDownFall = projectilesDownFall;
+            }
         }
+        Addon_trailRenderer.transform.parent = transform.parent;
+        Destroy(Addon_trailRenderer.gameObject, Addon_trailRenderer.time);
         Destroy(gameObject);
     }
 }

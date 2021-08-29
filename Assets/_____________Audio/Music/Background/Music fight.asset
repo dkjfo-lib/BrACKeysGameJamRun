@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Music fight
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: a61d67903b9287c48853fc8ddbc60d08, type: 3}
-  - {fileID: 8300000, guid: 6a6f47510fd648644b7404824cfb8016, type: 3}
+  - {fileID: 8300000, guid: 8de1b3080df4fde4b8645a0ee3df4fea, type: 3}
+  - {fileID: 8300000, guid: b6aff27599b9fdb4c9084af7da430f90, type: 3}
