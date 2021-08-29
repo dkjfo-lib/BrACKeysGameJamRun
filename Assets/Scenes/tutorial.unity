@@ -46716,14 +46716,6 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: main
       objectReference: {fileID: 0}
-    - target: {fileID: 4267900672555108595, guid: a2d93e7536524cf46a8f3141cb6f122e, type: 3}
-      propertyPath: m_Size.y
-      value: 47.866505
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267900672555108595, guid: a2d93e7536524cf46a8f3141cb6f122e, type: 3}
-      propertyPath: m_Offset.y
-      value: -23.933252
-      objectReference: {fileID: 0}
     - target: {fileID: 4267900672555108596, guid: a2d93e7536524cf46a8f3141cb6f122e, type: 3}
       propertyPath: m_Name
       value: door Exit
