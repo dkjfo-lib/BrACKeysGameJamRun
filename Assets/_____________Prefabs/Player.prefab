@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b64e67ccc29704eb154284b62072f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementInput: {fileID: 11400000, guid: 0340bbe376d8a4e46be28c6af646ec67, type: 2}
   normalSpeed: 100
   maintainSpeedValue: 0.97
   drag: 10
@@ -378,6 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62830e20431261241ae864ef52540dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightInput: {fileID: 11400000, guid: aef9a1f94fa32624ebb208b6cbf7b04d, type: 2}
   Pipe_ManaValue: {fileID: 11400000, guid: 73c5aacd49639a242b132bc8f7bd18d3, type: 2}
   maxMana: 12
   curMana: 12

@@ -58,4 +58,16 @@ public class WeaponUI : MonoBehaviour
     {
         currentWeaponBorder.rectTransform.localPosition = Vector3.Lerp(currentWeaponBorder.rectTransform.localPosition, currentWeaponBorderTargetPos, .6f);
     }
+
+    public void ChangeWeapon(int id)
+    {
+        if (!WeaponPipe.gameWeapons[id].unlocked)
+        {
+            return;
+        }
+        else
+        {
+            WeaponPipe.currentWeapon = id;
+        }
+    }
 }

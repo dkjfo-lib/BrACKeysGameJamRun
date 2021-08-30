@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public VectorValue movementInput;
+
     public float normalSpeed = 100;
     public float maintainSpeedValue = .97f;
     public float drag = 10;
@@ -18,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        var input = CreateMovementInput();
+        var input = (Vector2)movementInput.value;
         if (input != Vector2.zero)
         {
             var speed = Input.GetKey(KeyCode.LeftShift) ?
@@ -33,17 +35,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    Vector2 CreateMovementInput()
-    {
-        Vector2 input = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
-            input -= Vector2.right;
-        if (Input.GetKey(KeyCode.D))
-            input += Vector2.right;
-        if (Input.GetKey(KeyCode.S))
-            input -= Vector2.up;
-        if (Input.GetKey(KeyCode.W))
-            input += Vector2.up;
-        return input;
-    }
+    //Vector2 CreateMovementInput()
+    //{
+    //    Vector2 input = Vector2.zero;
+    //    if (Input.GetKey(KeyCode.A))
+    //        input -= Vector2.right;
+    //    if (Input.GetKey(KeyCode.D))
+    //        input += Vector2.right;
+    //    if (Input.GetKey(KeyCode.S))
+    //        input -= Vector2.up;
+    //    if (Input.GetKey(KeyCode.W))
+    //        input += Vector2.up;
+    //    return input;
+    //}
 }

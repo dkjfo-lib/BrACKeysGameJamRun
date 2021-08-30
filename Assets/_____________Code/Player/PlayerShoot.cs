@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public VectorValue sightInput;
     public Pipe_Value Pipe_ManaValue;
     [Space]
     public float maxMana = 12;
@@ -23,7 +24,7 @@ public class PlayerShoot : MonoBehaviour
 
     float timeLastShoot = -100;
 
-    int currentWeaponId = 0;
+    int currentWeaponId => Pipe_Weapon.currentWeapon;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class PlayerShoot : MonoBehaviour
     {
         RechargeMana();
         Shoot();
-        SwitchWeapon();
+        //SwitchWeapon();
     }
 
     void RechargeMana()
@@ -53,7 +54,7 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         RotateToMouse();
-        if (Input.GetMouseButton(0))
+        if (sightInput.value != Vector3.zero)
         {
             ShootPrimary();
         }
@@ -61,9 +62,12 @@ public class PlayerShoot : MonoBehaviour
 
     void RotateToMouse()
     {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 directionToMouse = mouseWorldPosition - (Vector2)transform.position;
-        transform.right = directionToMouse;
+        //Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 directionToMouse = mouseWorldPosition - (Vector2)transform.position;
+        //transform.right = directionToMouse;
+
+        if (sightInput.value != Vector3.zero)
+            transform.right = sightInput.value;
     }
 
     void ShootPrimary()
@@ -112,24 +116,24 @@ public class PlayerShoot : MonoBehaviour
         manaDoesntRecharge = false;
     }
 
-    void SwitchWeapon()
-    {
-        var mouseWheel = Input.GetAxis("Mouse ScrollWheel");
-        if (mouseWheel > 0)
-        {
-            var uw = Pipe_Weapon.unlockedWeapons;
-            currentWeaponId += 1;
-            if (currentWeaponId > uw.Length - 1)
-                currentWeaponId = 0;
-            Pipe_Weapon.currentWeapon = currentWeaponId;
-        }
-        if (mouseWheel < 0)
-        {
-            var uw = Pipe_Weapon.unlockedWeapons;
-            currentWeaponId -= 1;
-            if (currentWeaponId < 0)
-                currentWeaponId = uw.Length - 1;
-            Pipe_Weapon.currentWeapon = currentWeaponId;
-        }
-    }
+    //void SwitchWeapon()
+    //{
+    //    var mouseWheel = Input.GetAxis("Mouse ScrollWheel");
+    //    if (mouseWheel > 0)
+    //    {
+    //        var uw = Pipe_Weapon.unlockedWeapons;
+    //        currentWeaponId += 1;
+    //        if (currentWeaponId > uw.Length - 1)
+    //            currentWeaponId = 0;
+    //        Pipe_Weapon.currentWeapon = currentWeaponId;
+    //    }
+    //    if (mouseWheel < 0)
+    //    {
+    //        var uw = Pipe_Weapon.unlockedWeapons;
+    //        currentWeaponId -= 1;
+    //        if (currentWeaponId < 0)
+    //            currentWeaponId = uw.Length - 1;
+    //        Pipe_Weapon.currentWeapon = currentWeaponId;
+    //    }
+    //}
 }
