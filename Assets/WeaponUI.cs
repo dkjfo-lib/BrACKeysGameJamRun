@@ -11,6 +11,7 @@ public class WeaponUI : MonoBehaviour
     public Sprite[] weaponSprites;
     [Space]
     public Image currentWeaponBorder;
+    public float cellSize = 110;
 
     int weaponsUnlocked;
     int currentWeapon;
@@ -44,7 +45,6 @@ public class WeaponUI : MonoBehaviour
 
     IEnumerator UpdateCurrentWeapon()
     {
-        var cellSize = 110;
         while (true)
         {
             currentWeapon = WeaponPipe.currentWeapon;
