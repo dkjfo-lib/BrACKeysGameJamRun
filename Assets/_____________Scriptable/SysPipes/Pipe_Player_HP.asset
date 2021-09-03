@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23fe45dc460c104d83f39b37734d850, type: 3}
   m_Name: Pipe_Player_HP
   m_EditorClassIdentifier: 
-  maxValue: 10
+  maxValue: 0
   currentValue: 0
